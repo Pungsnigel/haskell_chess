@@ -9,12 +9,16 @@ type ChessBoard = [[Square]]
 -- Define a square as either a Piece or Nothing.
 type Square = Maybe Piece
 
+showSquare :: Square -> Char
+showSquare Nothing  = ' '
+showSquare (Just p) = showPiece p
+
 -- A Piece only has i color and a type. 
-data Piece      = Piece  PieceColor PieceType
--- Chess is played with only two colors
-data PieceColor = White | Black
+data Piece      = Piece  PieceColor PieceType deriving(Show)
+-- Chess is played with only two colors 
+data PieceColor = White | Black deriving(Show)
 -- The different types of chess pieces. 
-data PieceType  = King | Queen | Bishop | Rook | Knight | Pawn
+data PieceType  = King | Queen | Bishop | Rook | Knight | Pawn deriving(Show)
 
 showPiece :: Piece -> Char
 showPiece (Piece White King)   = 'K'
