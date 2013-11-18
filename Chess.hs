@@ -9,9 +9,14 @@ type ChessBoard = [[Square]]
 -- Define a square as either a Piece or Nothing.
 type Square = Maybe Piece
 
+-- maybe  ' ' showPiece p will return ' ' if Nothing
+-- and showPiece p if Piece
 showSquare :: Square -> Char
-showSquare Nothing  = ' '
-showSquare (Just p) = showPiece p
+showSquare p  = maybe ' ' showPiece p 
+
+readSquare :: Char -> Square
+readSquare ' '  = Nothing
+readSquare char = Just (readPiece char)  
 
 -- A Piece only has i color and a type. 
 data Piece      = Piece  PieceColor PieceType deriving(Show)
